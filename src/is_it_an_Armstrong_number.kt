@@ -4,7 +4,7 @@ fun isNbAnArmstrongNumber(n: Int): Boolean {
     val str=n.toString() //convert the number to a string so we could access any digit
     val power=str.length
     var sum =0
-    for (i in 0 until power) { // Use until to avoid IndexOutOfBoundsException
+    for (i in 0..<power) { // Use until to avoid IndexOutOfBoundsException
         val digit = str[i].toString().toInt() // Convert Char to Int correctly
         sum += Math.pow(digit.toDouble(), power.toDouble()).toInt() // Convert to Double and then to Int
     }
