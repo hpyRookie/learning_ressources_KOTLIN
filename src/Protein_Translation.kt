@@ -7,19 +7,34 @@ fun splitInThreeSequence(rna: String): List<String> {
     return rna.chunked(3)
 }
 
-fun convertCondonsInProtein(Codons:List<String>): String {
+fun convertCondonsInProtein(Codons:List<String>): List<String> {
     /* use a dictionary to assimilate codons sequence and protein based on the documentation */
     val list:MutableList<String> = mutableListOf()
 
 
     val tableOfProtein: MutableMap<String, String> = mutableMapOf(
+        /* map to link codon and protein */
         "AUG" to "Methionine",
         "UUU" to "Phenylalanine" ,
+        "UUC" to "Phenylalanine" ,
+        "UUA" to "Leucine",
+        "UUG" to "Leucine",
         "UCU" to "Serine",
-        "UAA" to "Stop"
+        "UGC" to "Serine",
+        "UCA" to "Serine",
+        "UCG" to "Serine",
+        "UAU" to "Tyrosine",
+        "UAC" to "Tyrosine",
+        "UGU" to "Cysteine",
+        "UGC" to "Cysteine",
+        "UGG" to "Tryptophan",
+        "UAA" to "Stop",
+        "UAG" to "Stop",
+        "UGA" to "Stop"
     )
 
     for (codon in Codons) {
+        /* iterate in the list to assimilate each codon to protein */
         if (tableOfProtein[codon]=="Stop") {
             println("End of the translation")
             break
@@ -28,12 +43,11 @@ fun convertCondonsInProtein(Codons:List<String>): String {
 
     }
 
-    return list.joinToString(", ") // Join the list into a single string
+    return list
 }
 
 fun main(args: Array<String>) {
     val condons = splitInThreeSequence(RNA)
-    println(condons)
     val protein = convertCondonsInProtein(condons)
-    println(protein)  // Output: Methionine, Phenylalanine, Serine, Stop
+    println(protein)
 }
