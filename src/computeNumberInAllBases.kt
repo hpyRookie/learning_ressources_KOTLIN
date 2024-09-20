@@ -13,5 +13,5 @@ fun convertNumberToBase10(n:Int,base:Int):Int {
 fun main(args: Array<String>) {
     println(convertNumberToBase10(101010,2))
     println(convertNumberToBase10(42,10))
-    println(convertNumberToBase10(1120,3);splitInThreeSequence())
+    println(convertNumberToBase10(1120,3))
 }
