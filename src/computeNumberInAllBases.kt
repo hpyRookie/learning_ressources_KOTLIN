@@ -1,6 +1,6 @@
 import kotlin.math.pow
 
-fun convertNumberToBase(n:Int,base:Int):Int {
+fun convertNumberToBase10(n:Int,base:Int):Int {
     val str = n.toString().reversed()//reverse so the list will have correct index
     var sum = 0
     for (i in str.indices) {
@@ -11,7 +11,7 @@ fun convertNumberToBase(n:Int,base:Int):Int {
 }
 
 fun main(args: Array<String>) {
-    println(convertNumberToBase(101010,2))
-    println(convertNumberToBase(42,10))
-    println(convertNumberToBase(1120,3);splitInThreeSequence())
+    println(convertNumberToBase10(101010,2))
+    println(convertNumberToBase10(42,10))
+    println(convertNumberToBase10(1120,3);splitInThreeSequence())
 }
