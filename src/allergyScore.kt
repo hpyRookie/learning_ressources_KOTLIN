@@ -30,13 +30,25 @@ fun computeAllergyTest(scoreInBinary:String):List<String> {
     }
 
 fun allergyTest(score:Int):String  {
-    val scoreInBinary=convertScoreToBinary(score).reversed()
+    val scoreCtrl=handleCaseScoreValueCannotBeContainedOn8Bits(score)
+    val scoreInBinary=convertScoreToBinary(scoreCtrl).reversed()
     val resultList=computeAllergyTest(scoreInBinary)
     val resultString=resultList.joinToString(", ") // convert list to string
     return resultString
     }
 
+fun handleCaseScoreValueCannotBeContainedOn8Bits(score:Int):Int {
+    return if ((score >= 256) && (score<512))
+        score-256
+    else if ((score >=512 && (score<1024)))
+        score-512
+    else
+        score-1024
+
+}
 
 fun main(args: Array<String>) {
     println(allergyTest(160))
+    println(allergyTest(257))
+    println(allergyTest(1026))
 }
